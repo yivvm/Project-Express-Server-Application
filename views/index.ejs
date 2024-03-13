@@ -1,0 +1,79 @@
+<h1>Schedule an appointment</h1>
+
+<!-- Information Form -->
+<form id="info" action="/" method="POST">
+    <div class="form">
+        <div>
+            <label for="scheduled date">Schedule On</label>
+            <input name="scheduleddate" type="date" placeholder="MM/DD/YYYY" required id="scheduleddate"/>
+            <input type="time" name="time" id="time" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="firstname">Legal First Name</label>
+            <input name="firstname" type="text" placeholder="Legal First Name" required id="firstname"/>
+        </div>
+        
+        <div>
+            <label for="lastname">Legal Last Name</label>
+            <input name="lastname" type="text" placeholder="Legal Last Name" required id="lastname"/>
+        </div>
+        
+        <div>
+            <label for="date of birth">Date of Birth</label>
+            <input name="dateofbirth" type="date" placeholder="MM/DD/YYYY" required id="dateofbirth"/>
+        </div>
+
+        <div>
+            <label for="legalsex">Legal Sex</label>
+            <span style="font-size: 10px; color:grey">(Your legal sex is what is listed on your ID.)</span>
+            <!-- <div id="gender-radio"> -->
+                <input type="radio" id="female" name="gender" value="female" checked="unchecked"> Female
+                <input type="radio" id="male" name="gender" value="male">Male
+            <!-- </div> -->
+        </div>
+
+        <div>
+            <label for="contact">How can we contact you for your visit?</label>
+        </div>
+        <div>
+            <input name="phone" id="phone" type="tel" placeholder="Mobile Phone Number (XXX) XXX-XXX or XXX-XXX-XXXX" required pattern="^\(\d{3}\)\s\d{3}-\d{4}$|^\d{3}-\d{3}-\d{4}$">
+        </div>
+        <div>
+            <input name="email" id="email" type="email" placeholder="Email" required/>
+        </div>
+
+        <div>
+            <label for="reason">Help us prepare for your arrival</label> 
+            <select name="reason" id="reason" required>
+                <option value="">Reason for visit</option>
+                <option value="illness">Illness</option>
+                <option value="injury">Injury</option>
+                <option value="wound">Wound/Laceration</option>
+                <option value="testing">Testing onsite</option>
+                <option value="DOT physicals">DOT physicals</option>
+                <option value="others">Others</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="other">Other Reasons</label>
+            <input type="text" name="other" placeholder="Please let us know ...">
+        </div>
+
+        <div class="flex-row">
+            <input name="terms" type="checkbox" required/>
+            <label for="terms" style="font-size: 15px;">I agree to the&nbsp;<a href="#">Terms of Use</a>.</label>
+            <button class="button" id="submit">Submit</button>
+        </div>
+        <br>
+
+        <div>
+            <a href="/register">Register</a>
+            <a href="/login">Login</a>
+        </div>
+    </div>
+    
+</form>
+        

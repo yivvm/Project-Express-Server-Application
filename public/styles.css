@@ -1,0 +1,151 @@
+* {
+    box-sizing: border-box;
+  }
+  
+/* CSS Custom Properties */
+:root {
+  --main-bg: white;
+  --top-menu-bg: #03045E;
+  --sub-menu-bg: #023E8A;
+}
+
+body {
+  font-family: Geneva, sans-serif, Arial, Helvetica ;
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 3rem auto;
+  color: black;
+}
+
+.flex-ctr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav a {
+  line-height: 3rem;
+  padding: 0 1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+}
+
+#top-menu a:hover {
+  background-color: var(--sub-menu-bg);
+}
+
+header, #top-menu {
+  position: relative;
+}
+
+#top-menu {
+  z-index: 20;
+}
+
+#sub-menu {
+  width: 100%;
+  z-index: 10;
+  transition: top 0.5s ease-out;
+}
+
+#sub-menu a:hover {
+  background-color: var(--top-menu-bg);
+}
+
+nav a.active {
+  background-color: var(--sub-menu-bg);
+  color: var(--main-bg);
+}
+
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  min-width: auto;
+  text-align: center;
+  /* border: black; */
+}
+
+div {
+  padding: 10px;
+}
+
+  /* === left =================== */
+.left {
+  width: 50%;
+}
+
+.time-slots {
+  display: none;
+}
+
+.time-slot {
+  float: left;
+  margin-bottom: 5px;
+  vertical-align: top;
+  border: 1px solid #03045E;
+  margin: 5px;
+  /* padding: 5px; */
+  width: calc(20% - 12.5px);
+  box-sizing: border-box;
+}
+
+#time-slots {
+  /* display: flex; */
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+  /* === right======================= */
+.right {
+  width: 50%;
+}
+
+input[type=text], input[type=date], input[type=tel], input[type=email], select, textarea, [type=submit] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #ADB5BD;
+}
+
+input[type=checkbox] {
+  margin-top: 16px;
+}
+
+.button{
+  text-decoration: none;
+  padding: 1em 2.5em; 
+  background-color: #023E8A; 
+  color: #fff; 
+  border-radius: 0.25em;
+  font-size: 16px;
+  
+  background-image: linear-gradient(75deg, #0466C8, #023E7D, #023E8A, #0353A4); 
+  background-size: 300% ;
+  background-position: left;
+  
+  transition: 300ms background-position ease-in-out;
+  cursor: pointer;
+}
+
+.button:hover{
+  background-position: right; 
+  opacity: 0.8;
+}

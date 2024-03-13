@@ -1,0 +1,68 @@
+new visit:  {
+    id: '1710341646137',
+    'schdueled date': '2024-03-14',
+    time: '12:02',
+    'first name': 'a',
+    'last name': 'a',
+    'date of birth': '2023-08-10',
+    gender: 'female',
+    phone: '111-111-1111',
+    email: 'w@w',
+    reason: 'wound',
+    other: ''
+  }
+
+
+new registered:  {
+  id: 8,
+  name: 'Tom McClain',
+  email: 'tom_mcclain1@example.com',
+  password: '$2b$10$bG6fjN6tE3VWndxTlnEmfO4SSVTLjcAHYU1mgTLOWP07melY0f8fy'
+}
+
+const users = [
+    {
+        id: 1,
+        name: "John Beckwith",
+        username: "johnb23",
+        email: "jb23@example.com",
+    },
+    {
+        id: 2,
+        name: "Carmen Fletcher",
+        username: "carmenfletcher",
+        email: "carmen_f@example.com",
+    },
+    {
+        id: 3,
+        name: "Rebecca Bubman",
+        username: "beccabubman",
+        email: "r_bubman95@example.com",
+    },
+    {
+        id: 4,
+        name: "David Elliott",
+        username: "daveelliott",
+        email: "david_elliott@example.com",
+      },
+    {
+        id: 5,
+        name: "Jenny Li",
+        username: "jennyjenny",
+        email: "jennyli1992@example.com",
+    },
+    {
+        id: 6,
+        name: "Ed Archie",
+        username: "edarchie",
+        email: "ed.archie.work@example.com",
+    },
+    {
+        id: 7,
+        name: "Nina Rooney",
+        username: "ninarooney2024",
+        email: "ninarooney2024@example.com",
+    }
+  ];
+
+module.exports = users;
