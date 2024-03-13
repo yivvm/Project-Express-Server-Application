@@ -1,0 +1,22 @@
+<h1>Review</h1>
+<!-- <form action="/register" method="POST" enctype="application/x-www-form-urlencoded"> -->
+<form action="/review" method="POST">
+    <div>
+        <label for="review">What do you think of your visit?</label>
+    </div>
+    <textarea id="review" name="review"></textarea>
+
+    <div>
+        <label for="score">Score for your visit</label>
+        <span style="font-size: 15px">(5 for most satisfied, 1 for not satisfied)</span>
+        <br>
+        <input type="radio" id="5" name="score">5
+        <input type="radio" id="4" name="score">4
+        <input type="radio" id="3" name="score">3
+        <input type="radio" id="2" name="score">2
+        <input type="radio" id="1" name="score">1
+    </div>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+<a href="/">Back to Schedule</a>

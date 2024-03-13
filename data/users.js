@@ -64,5 +64,11 @@ module.exports = [
         "name": "Jill Morgan",
         "email": "jmorhan@example.com",
         "password": "$2b$10$xm2yvrIV5YPeiqIJwb7IZOWD5KeFRI9DyDUvXqZGhXLqkWzbh0/UW"
+    },
+    {
+        "id": 12,
+        "name": "sijia Zhu",
+        "email": "sjzhu78@example.com",
+        "password": "$2b$10$r4qk0Sj3TgMuEX3D1HtJPuZb52.REuegyobiHOyZzSmjS8rp642CO"
     }
 ]

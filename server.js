@@ -5,6 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express')
 const app = express()
 const fs = require('fs')
+const bodyParser = require('body-parser')
 const bcrypt = require('bcrypt')
 const passport = require('passport')
 const flash = require('express-flash')
@@ -20,9 +21,7 @@ initializePassport(
 
 const users = require('./data/users')
 const visits = require('./data/visits')
-const bodyParser = require('body-parser')
-
-// app.use(express.static('public'))
+const reviews = require('./data/reviews')
 
 app.set('view-engine', 'ejs')
 app.use(express.json())
@@ -39,7 +38,15 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
 
-// GET the main page: Schedule an appoitment
+
+// GET the main.html
+app.use(express.static('public'))
+app.get('/main', (req, res) => {
+    res.sendFile(__dirname + '/public/main.html')
+})
+
+
+// GET the default page: Schedule an appoitment
 app.get('/', (req, res) => {
     res.render('index.ejs')
 })
@@ -49,6 +56,45 @@ app.get('/login', (req, res) => {
     res.render('login.ejs')
 })
 
+// GET the register page
+app.get('/register', (req, res) => {
+    res.render('register.ejs')
+})
+
+// GET the review page
+app.get('/review', (req, res) => {
+    res.render('review.ejs')
+})
+
+
+// GET all users at API endpoint
+app.get('/api/users', (req, res) => {
+    res.json(users)
+})
+
+// GET all visits at API endpoint
+app.get('/api/visits', (req, res) => {
+    res.json(visits)
+})
+
+// GET visit by id at API endpoint
+app.get('/api/visits/:id', (req, res, next) => {
+    try {
+        const visit = visits.find(v => v.id == req.params.id) 
+        console.log(visit)
+        if (visit) res.json(visit)
+        next()
+    } catch (err) {
+        console.error(err)
+    }
+})
+
+// GET all reviews at API endpoint
+app.get('/reviews', (req, res) => {
+    res.json(reviews)
+})
+
+
 // Post - login
 app.post('/login', passport.authenticate('local', {
     successRedirect: '/',
@@ -57,57 +103,7 @@ app.post('/login', passport.authenticate('local', {
 }))
 
 
-// GET all users
-app.get('/api/users', (req, res) => {
-    res.json(users)
-})
-
-// GET the register page
-app.get('/register', (req, res) => {
-    res.render('register.ejs')
-})
-
-
-
-// POST - API endpoint - add a new user 
-app.post('/api/users', async (req, res) => {
-    try {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10)
-
-        if (req.body.email && req.body.password) {
-            if (users.find(u => u.email == req.body.email)) {
-                res.json({ error: 'Email already registered. Please log in.'})
-                return
-            }
-            
-            const newUser = {
-                id: users[users.length - 1].id + 1,
-                name: req.body.name,
-                email: req.body.email,
-                password: hashedPassword
-            }
-
-            users.push(newUser)
-
-            // Append new user to users.js
-            const usersJS = 'module.exports = ' + JSON.stringify(users, null, 4)
-            fs.writeFile('./data/users.js', usersJS, (err) => {
-                if (err) {
-                    console.error('error writing to users.js: ', err)
-                    res.status(500).json({ error: 'internal server error' })
-                    return
-                }
-
-                console.log('New user added via API: ', newUser)
-                res.json(newUser)
-                })
-        }
-    } catch {
-
-    }
-})
-
-// POST - create a new user at the webpage by an end user
+// POST - create a new user at the webpage by an end user, and update /api/users as well
 app.post('/register', async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
@@ -118,6 +114,7 @@ app.post('/register', async (req, res) => {
                 return
             }
             
+            const filename = 'users'
             const newUser = {
                 id: users[users.length - 1].id + 1,
                 name: req.body.name,
@@ -125,7 +122,7 @@ app.post('/register', async (req, res) => {
                 password: hashedPassword
             }
             users.push(newUser)
-            updateUsersFile(users)
+            updateJSDataFile(users, filename)
             console.log(`new registered: `, newUser)
             res.redirect('/')
         }
@@ -136,11 +133,13 @@ app.post('/register', async (req, res) => {
     }
 })
 
-// POST - create a new visit
+
+// POST - create a new visit at the website by an end user, and update /api/visits as well
 app.post('/', (req, res) => {
     try {
+        const filename = 'visits'
         const newVisit = {
-            id: Date.now().toString(),
+            id: visits[visits.length - 1].id + 1,
             "schdueled date": req.body.scheduleddate,
             time: req.body.time,
             "first name": req.body.firstname,
@@ -153,6 +152,7 @@ app.post('/', (req, res) => {
             "other": req.body.other
         }
         visits.push(newVisit)
+        updateJSDataFile(visits, filename)
         console.log('new visit: ', newVisit)
         res.redirect('/login')
     } catch {
@@ -160,9 +160,9 @@ app.post('/', (req, res) => {
     }
 })
 
-function updateUsersFile(users) {
-    const usersJS = 'module.exports = ' + JSON.stringify(users, null, 4);
-    fs.writeFile('./data/users.js', usersJS, (err) => {
+function updateJSDataFile(inputs, filename) {
+    const inputsJS = 'module.exports = ' + JSON.stringify(inputs, null, 4);
+    fs.writeFile(`./data/${filename}.js`, inputsJS, (err) => {
         if (err) {
             console.error('Error writing to users.js:', err);
         } else {
@@ -171,11 +171,48 @@ function updateUsersFile(users) {
     })
 }
 
-app.delete('/logout', (req, res) => {
-    req.logOut()
-    req.redirect('/')
+
+// POST - create a new review at the website by an end user, and update /api/reviews as well
+app.post('/reviews', (req, res) => {
+    try {
+        const filename = 'reviews'
+        const newReview = {
+            id: reviews[reviews.length - 1].id + 1,
+            review: req.body.review,
+            score: req.body.score
+        }
+        reviews.push(newReview)
+        updateJSDataFile(reviews, filename)
+        console.log(`new review: `, newReview)
+        res.status(200).send('Thank you for your review!')
+
+    } catch {
+        res.redirect('/')
+    }
 })
 
+
+// DELETE visit
+app.delete('/api/visits/:id', (req, res, next) => {
+    const visit = visits.find((v, i) => {
+        if (v.id == req.params.id) {
+            visits.splice(i, 1)
+            return true
+        }
+    })
+    
+    if (visit) res.json(visit)
+    else next() 
+})
+
+// DELETE review
+
+
+
+app.use((req, res) => {
+    res.status(404)
+    res.json({ error: 'resource not found '})
+})
 
 app.listen(3001, () => {
     console.log(`server running on port 3001`)

@@ -1,33 +1,80 @@
-const visits = [
+module.exports = [
     {
-        id: '1710341646137',
-        'schdueled date': '2024-03-14',
-        time: '12:00PM',
-        'first name': 'Aeron',
-        'last name': 'Han',
-        'date of birth': '1993-08-10',
-        gender: 'male',
-        phone: '111-111-1111',
-        email: 'ahan@example',
-        reason: 'wound',
-        other: ''
+        "id": 1,
+        "schdueled date": "2024-03-14",
+        "time": "12:00PM",
+        "first name": "Aeron",
+        "last name": "Han",
+        "date of birth": "1993-08-10",
+        "gender": "male",
+        "phone": "111-111-1111",
+        "email": "ahan@example",
+        "reason": "wound",
+        "other": ""
     },
     {
-        id: '1710350382508',
-        'schdueled date': '2024-03-14',
-        time: '13:00',
-        'first name': 'Zach',
-        'last name': 'Joshi',
-        'date of birth': '2002-10-06',
-        gender: 'male',
-        phone: '111-222-1122',
-        email: 'zachjoshi@example.com',
-        reason: 'illness',
-        other: ''
+        "id": 2,
+        "schdueled date": "2024-03-14",
+        "time": "13:00",
+        "first name": "Zach",
+        "last name": "Joshi",
+        "date of birth": "2002-10-06",
+        "gender": "male",
+        "phone": "111-222-1122",
+        "email": "zachjoshi@example.com",
+        "reason": "illness",
+        "other": ""
     },
     {
-        
+        "id": 3,
+        "schdueled date": "2024-03-15",
+        "time": "08:00",
+        "first name": "Larry ",
+        "last name": "Pittman",
+        "date of birth": "1976-04-06",
+        "gender": "male",
+        "phone": "123-888-0000",
+        "email": "larrypittman@example.com",
+        "reason": "testing",
+        "other": ""
+    },
+    {
+        "id": 4,
+        "schdueled date": "2024-03-17",
+        "time": "11:30",
+        "first name": "Steven",
+        "last name": "George",
+        "date of birth": "1982-11-22",
+        "gender": "male",
+        "phone": "999-000-8888",
+        "email": "steven.george@example.com",
+        "reason": "illness",
+        "other": ""
+    },
+    {
+        "id": 5,
+        "schdueled date": "2024-03-15",
+        "time": "10:45",
+        "first name": "Carmen",
+        "last name": "Beckwith",
+        "date of birth": "1977-08-10",
+        "gender": "female",
+        "phone": "888-999-0000",
+        "email": "cbeckwith@example.com",
+        "reason": "injury",
+        "other": ""
+    },
+    {
+        "id": 6,
+        "schdueled date": "2024-03-16",
+        "time": "09:00",
+        "first name": "Sophie",
+        "last name": "Shah",
+        "date of birth": "1982-06-07",
+        "gender": "female",
+        "phone": "888-999-0898",
+        "email": "ssshah@example.com",
+        "reason": "wound",
+        "other": ""
     }
-  ];
-  
-  module.exports = visits;
+]
