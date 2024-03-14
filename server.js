@@ -124,11 +124,11 @@ app.get('/api/reviews', (req, res) => {
 
 
 // Post - login
-// app.post('/login', passport.authenticate('local', {
-//     successRedirect: '/',
-//     failureRedirect: '/login',
-//     failureFlash: true
-// }))
+app.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true
+}))
 
 
 // POST - create a new user at the webpage by an end user, and update /api/users as well
