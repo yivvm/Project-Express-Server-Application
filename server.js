@@ -66,10 +66,45 @@ app.get('/review', (req, res) => {
     res.render('review.ejs')
 })
 
+// Match any route of review starting with /reviews/ followed by numeric review ID
+app.get(/^\/review\/(\d+)$/, (req, res) => {
+    try {
+        const reviewId = req.params[0]
+        const review = reviews.find(r => r.id == reviewId) 
+        if (review) {
+            res.json(review)
+        } else {
+            res.status(404).json({ error: "Review not found. "})
+        }
+    } catch (err) {
+        console.error(err)
+    }
+})
+
+// Match any route of review starting with /reviews/ followed by score=[1 to 5]
+app.get(/^\/reviews\/score=([1-5])$/, (req, res) => {
+    try {
+        const score = req.params[0]
+        if (score >=1 && score <= 5) {
+            const scoreReviews = reviews.filter(r => r.score == score) 
+            if (scoreReviews.length > 0) {
+                res.json(scoreReviews)
+            } else {
+                res.status(404).json({ error: "No reviews found for this specific score. "})
+            }
+        } else {
+            res.status(404).json({ error: "Invalid score. Score must be between 1 and 5. "})
+        }
+    } catch (err) {
+        console.error(err)
+    }
+})
+
 // GET the Login page
 app.get('/test', (req, res) => {
     res.render('test.ejs')
 })
+
 
 // GET all users at API endpoint
 app.get('/api/users', (req, res) => {
