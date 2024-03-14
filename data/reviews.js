@@ -33,5 +33,10 @@ module.exports = [
         "id": 7,
         "review": "dfsfdsdfddddddsdfsadfsfd",
         "score": "5"
+    },
+    {
+        "id": 8,
+        "review": "Ensure that the program runs without errors (comment out things that do not work, and explain your blockers - you can still receive partial credit).",
+        "score": "5"
     }
 ]

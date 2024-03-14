@@ -70,5 +70,23 @@ module.exports = [
         "name": "sijia Zhu",
         "email": "sjzhu78@example.com",
         "password": "$2b$10$r4qk0Sj3TgMuEX3D1HtJPuZb52.REuegyobiHOyZzSmjS8rp642CO"
+    },
+    {
+        "id": 13,
+        "name": "Katie Wong",
+        "email": "Wong@example.com",
+        "password": "$2b$10$LDgtRFt01zcd1/p5kWz5OuUQKBg2.zroVml9hUEsaYz6He6HpzxmO"
+    },
+    {
+        "id": 14,
+        "name": "wong",
+        "email": "wong@example.com",
+        "password": "$2b$10$qEAoSi.j6EElevgLHGXgD.e17Ea.Zgy7o.VjUFrVBUKBiXIKULUum"
+    },
+    {
+        "id": 15,
+        "name": "Michael Smith",
+        "email": "mmsmith@example.com",
+        "password": "$2b$10$Svq1FZM2Qz3oDRTOGwL16uIzQgBIXM4cjOlkhkTxqmhVpk.pjlXRK"
     }
 ]

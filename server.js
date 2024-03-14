@@ -12,12 +12,12 @@ const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
 
-const initializePassport = require('./passport-config')
-initializePassport(
-    passport, 
-    email => users.find(user => user.email === email),
-    id => users.find(user => user.id === id)
-)
+// const initializePassport = require('./passport-config')
+// initializePassport(
+//     passport, 
+//     email => users.find(user => user.email === email),
+//     id => users.find(user => user.id === id)
+// )
 
 const users = require('./data/users')
 const visits = require('./data/visits')
@@ -124,11 +124,11 @@ app.get('/api/reviews', (req, res) => {
 
 
 // Post - login
-app.post('/login', passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: true
-}))
+// app.post('/login', passport.authenticate('local', {
+//     successRedirect: '/',
+//     failureRedirect: '/login',
+//     failureFlash: true
+// }))
 
 
 // POST - create a new user at the webpage by an end user, and update /api/users as well
