@@ -15,32 +15,32 @@ This is a simple appointment scheduling system implemented using Node.js and Exp
 
 ## Features
 ### Web pages for clients
-- ```http://localhost:3001``` 
-- ```http://localhost:3001/register```
-- ```http://localhost:3001/login```
-- ```http://localhost:3001/review```
+- http://localhost:3001
+- http://localhost:3001/register
+- http://localhost:3001/login
+- http://localhost:3001/review
 
 ### Registration
-- Users can register with their name, email, and password at ```http://localhost:3001/register```.
+- Users can register with their name, email, and password at http://localhost:3001/register.
 - Passwords are hashed using bcrypt before storing in the database.
 - User data is stored in `./data/users.js`.
 
 ### Appointment Scheduling
-- Users can schedule appointments by providing necessary details such as scheduled date, time, personal information, reason, etc., at ```http://localhost:3001```.
+- Users can schedule appointments by providing necessary details such as scheduled date, time, personal information, reason, etc., at http://localhost:3001.
 - Scheduled appointments are stored in `./data/visits.js`.
 
 ### Review System
-- Users can leave reviews along with a score at ```http://localhost:3001/review```.
+- Users can leave reviews along with a score at http://localhost:3001/review.
 - Review data is stored in `./data/reviews.js`.
 
 ### API Endpoints
-- `/api/users`: Get all registered users.
-- `/api/visits`: Get all scheduled visits. Optionally, filter visits by ```startDate``` and ```endDate```.  
-For example, ```/api/visits?startDate=2024-03-01&endDate=2024-03-20``` will return visits scheduled between March 1, 2024, and March 20, 2024.
-- `/api/visits/:id`: Get visit details by ID.
-- `/api/reviews`: Get all reviews.
-- `/api/reviews/:id`: Delete a review by ID.
-- `/api/visits/:id`: Delete a visit by ID.
+- http://localhost:3001/api/users: Get all registered users.
+- http://localhost:3001/api/visits: Get all scheduled visits. Optionally, filter visits by ```startDate``` and ```endDate```.  
+For example, http://localhost:3001/api/visits?startDate=2024-03-01&endDate=2024-03-20 will return visits scheduled between March 1, 2024, and March 20, 2024.
+- http://localhost:3001/api/visits/:id: Get visit details by ID.
+- http://localhost:3001/api/reviews: Get all reviews.
+- http://localhost:3001/api/reviews/:id: Delete a review by ID.
+- http://localhost:3001/api/visits/:id: Delete a visit by ID.
 
 ## File Structure
 - `server.js`: Main application file containing route handlers and server setup.
