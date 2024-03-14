@@ -66,6 +66,10 @@ app.get('/review', (req, res) => {
     res.render('review.ejs')
 })
 
+// GET the Login page
+app.get('/test', (req, res) => {
+    res.render('test.ejs')
+})
 
 // GET all users at API endpoint
 app.get('/api/users', (req, res) => {
@@ -73,9 +77,9 @@ app.get('/api/users', (req, res) => {
 })
 
 // GET all visits at API endpoint
-app.get('/api/visits', (req, res) => {
-    res.json(visits)
-})
+// app.get('/api/visits', (req, res) => {
+//     res.json(visits)
+// })
 
 // GET visit by id at API endpoint
 app.get('/api/visits/:id', (req, res, next) => {
@@ -89,8 +93,32 @@ app.get('/api/visits/:id', (req, res, next) => {
     }
 })
 
+// GET all visits at API endpoints with optional query parameters for filtering
+app.get('/api/visits', (req, res) => {
+    let filteredVisits = [...visits]
+
+    // console.log(filteredVisits)
+
+    if (req.query.startDate && req.query.endDate) {
+        const startDate = req.query.startDate
+        const endDate = req.query.endDate
+
+        console.log(startDate)
+        console.log(endDate)
+
+        filteredVisits = filteredVisits.filter(visit => {
+            const visitDate = visit['scheduled date']
+            console.log(visitDate)
+            return visitDate >= startDate && visitDate <= endDate
+        })
+    }
+
+    console.log(filteredVisits)
+    res.json(filteredVisits)
+})
+
 // GET all reviews at API endpoint
-app.get('/reviews', (req, res) => {
+app.get('/api/reviews', (req, res) => {
     res.json(reviews)
 })
 
@@ -140,7 +168,7 @@ app.post('/', (req, res) => {
         const filename = 'visits'
         const newVisit = {
             id: visits[visits.length - 1].id + 1,
-            "schdueled date": req.body.scheduleddate,
+            "scheduled date": req.body.scheduleddate,
             time: req.body.time,
             "first name": req.body.firstname,
             "last name": req.body.lastname,
@@ -154,7 +182,7 @@ app.post('/', (req, res) => {
         visits.push(newVisit)
         updateJSDataFile(visits, filename)
         console.log('new visit: ', newVisit)
-        res.redirect('/login')
+        res.status(200).send('Your visit was scheduled successfully.')
     } catch {
         res.redirect('/register')
     }
@@ -173,11 +201,11 @@ function updateJSDataFile(inputs, filename) {
 
 
 // POST - create a new review at the website by an end user, and update /api/reviews as well
-app.post('/reviews', (req, res) => {
+app.post('/review', (req, res) => {
     try {
         const filename = 'reviews'
         const newReview = {
-            id: reviews[reviews.length - 1].id + 1,
+            id: (reviews.length === 0) ? 1 : reviews[reviews.length - 1].id + 1,
             review: req.body.review,
             score: req.body.score
         }
@@ -187,7 +215,7 @@ app.post('/reviews', (req, res) => {
         res.status(200).send('Thank you for your review!')
 
     } catch {
-        res.redirect('/')
+        // res.redirect('/')
     }
 })
 
@@ -206,7 +234,17 @@ app.delete('/api/visits/:id', (req, res, next) => {
 })
 
 // DELETE review
+app.delete('/api/reviews/:id', (req, res, next) => {
+    const review = reviews.find((r, i) => {
+        if (r.id == req.params.id) {
+            reviews.splice(i, 1)
+            return true
+        }
+    })
 
+    if (review) res.json(review)
+    next()
+})
 
 
 app.use((req, res) => {

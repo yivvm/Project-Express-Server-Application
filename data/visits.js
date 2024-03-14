@@ -1,7 +1,7 @@
 module.exports = [
     {
         "id": 1,
-        "schdueled date": "2024-03-14",
+        "scheduled date": "2024-03-14",
         "time": "12:00PM",
         "first name": "Aeron",
         "last name": "Han",
@@ -14,7 +14,7 @@ module.exports = [
     },
     {
         "id": 2,
-        "schdueled date": "2024-03-14",
+        "scheduled date": "2024-03-14",
         "time": "13:00",
         "first name": "Zach",
         "last name": "Joshi",
@@ -27,7 +27,7 @@ module.exports = [
     },
     {
         "id": 3,
-        "schdueled date": "2024-03-15",
+        "scheduled date": "2024-03-15",
         "time": "08:00",
         "first name": "Larry ",
         "last name": "Pittman",
@@ -40,7 +40,7 @@ module.exports = [
     },
     {
         "id": 4,
-        "schdueled date": "2024-03-17",
+        "scheduled date": "2024-03-17",
         "time": "11:30",
         "first name": "Steven",
         "last name": "George",
@@ -53,7 +53,7 @@ module.exports = [
     },
     {
         "id": 5,
-        "schdueled date": "2024-03-15",
+        "scheduled date": "2024-03-15",
         "time": "10:45",
         "first name": "Carmen",
         "last name": "Beckwith",
@@ -66,7 +66,7 @@ module.exports = [
     },
     {
         "id": 6,
-        "schdueled date": "2024-03-16",
+        "scheduled date": "2024-03-16",
         "time": "09:00",
         "first name": "Sophie",
         "last name": "Shah",
@@ -76,5 +76,44 @@ module.exports = [
         "email": "ssshah@example.com",
         "reason": "wound",
         "other": ""
+    },
+    {
+        "id": 7,
+        "scheduled date": "2024-03-27",
+        "time": "16:00",
+        "first name": "Leah ",
+        "last name": "Lewis",
+        "date of birth": "1998-03-15",
+        "gender": "female",
+        "phone": "666-666-7777",
+        "email": "leahl1998@example.com",
+        "reason": "wound",
+        "other": ""
+    },
+    {
+        "id": 8,
+        "scheduled date": "2024-04-11",
+        "time": "14:03",
+        "first name": "Max",
+        "last name": "Logan",
+        "date of birth": "1980-06-08",
+        "gender": "male",
+        "phone": "233-233-2333",
+        "email": "maxlogan.work@example.com",
+        "reason": "injury",
+        "other": ""
+    },
+    {
+        "id": 9,
+        "scheduled date": "2024-04-03",
+        "time": "14:02",
+        "first name": "Richard",
+        "last name": "Walker",
+        "date of birth": "1985-09-20",
+        "gender": "female",
+        "phone": "333-222-2222",
+        "email": "rwalker85@example.com",
+        "reason": "others",
+        "other": "asdfasdfasdfas"
     }
 ]

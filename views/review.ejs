@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
 <h1>Review</h1>
 <!-- <form action="/register" method="POST" enctype="application/x-www-form-urlencoded"> -->
 <form action="/review" method="POST">
@@ -10,13 +21,16 @@
         <label for="score">Score for your visit</label>
         <span style="font-size: 15px">(5 for most satisfied, 1 for not satisfied)</span>
         <br>
-        <input type="radio" id="5" name="score">5
-        <input type="radio" id="4" name="score">4
-        <input type="radio" id="3" name="score">3
-        <input type="radio" id="2" name="score">2
-        <input type="radio" id="1" name="score">1
+        <input type="radio" id="5" name="score" value="5">5
+        <input type="radio" id="4" name="score" value="4">4
+        <input type="radio" id="3" name="score" value="3">3
+        <input type="radio" id="2" name="score" value="2">2
+        <input type="radio" id="1" name="score" value="1">1
     </div>
     <br>
     <button type="submit">Submit</button>
 </form>
 <a href="/">Back to Schedule</a>
+
+</body>
+</html>
