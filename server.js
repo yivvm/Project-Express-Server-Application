@@ -67,7 +67,7 @@ app.get('/review', (req, res) => {
 })
 
 // Match any route of review starting with /reviews/ followed by numeric review ID
-app.get(/^\/review\/(\d+)$/, (req, res) => {
+app.get(/^\/reviews\/(\d+)$/, (req, res) => {
     try {
         const reviewId = req.params[0]
         const review = reviews.find(r => r.id == reviewId) 

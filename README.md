@@ -1,6 +1,6 @@
 # Appointment Scheduling System - Express Server Application
 
-This is a simple appointment scheduling system implemented using Node.js and Express framework. It allows users to register, schedule appointments, leave reviews, and perform basic CRUD operations on user data, visit data, and review data.
+This is a simple appointment scheduling system implemented using Node.js and Express framework. It allows users to register, schedule appointments, leave reviews, access to the reviews fitered by the score number, and perform basic CRUD operations on user data, visit data, and review data.
 
 ## Setup
 1. Clone this repository to your local machine. 
@@ -19,6 +19,8 @@ This is a simple appointment scheduling system implemented using Node.js and Exp
 - http://localhost:3001/register
 - http://localhost:3001/login
 - http://localhost:3001/review
+- http://localhost:3001/reviews/:id: Access to the review with its reviewID, using regular expression ```/^\/reviews\/(\d+)$/```
+- http://localhost:3001/reviews/score=:id: Access to the reviews filtered by the score=1, score=2, score=3, score=4, or score=5, using regular expression ```/^\/reviews\/score=([1-5])$/``` 
 
 ### Registration
 - Users can register with their name, email, and password at http://localhost:3001/register.
@@ -31,6 +33,8 @@ This is a simple appointment scheduling system implemented using Node.js and Exp
 
 ### Review System
 - Users can leave reviews along with a score at http://localhost:3001/review.
+- Users can access to the review with its reviewID.
+- Users can access to the reviews filtered by the score=1, score=2, score=3, score=4, or score=5.
 - Review data is stored in `./data/reviews.js`.
 
 ### API Endpoints
