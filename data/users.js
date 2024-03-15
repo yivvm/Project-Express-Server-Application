@@ -88,5 +88,11 @@ module.exports = [
         "name": "Michael Smith",
         "email": "mmsmith@example.com",
         "password": "$2b$10$Svq1FZM2Qz3oDRTOGwL16uIzQgBIXM4cjOlkhkTxqmhVpk.pjlXRK"
+    },
+    {
+        "id": 16,
+        "name": "Garry Burk",
+        "email": "garymburk@example.com",
+        "password": "$2b$10$wfF729wB0uqfyIg6S.asdestR.Dwu.j7Fy2l/dC6MjuOd908SNuKa"
     }
 ]

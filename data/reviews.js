@@ -38,5 +38,10 @@ module.exports = [
         "id": 8,
         "review": "Ensure that the program runs without errors (comment out things that do not work, and explain your blockers - you can still receive partial credit).",
         "score": "5"
+    },
+    {
+        "id": 9,
+        "review": "Wikipedia[note 3] is a free-content online encyclopedia written and maintained by a community of volunteers,",
+        "score": "3"
     }
 ]

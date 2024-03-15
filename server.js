@@ -5,7 +5,6 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express')
 const app = express()
 const fs = require('fs')
-const bodyParser = require('body-parser')
 const bcrypt = require('bcrypt')
 const passport = require('passport')
 const flash = require('express-flash')
@@ -25,8 +24,6 @@ const reviews = require('./data/reviews')
 
 app.set('view-engine', 'ejs')
 app.use(express.json())
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json({ extended: true }))
 app.use(express.urlencoded({ extended: false }))
 app.use(flash())
 app.use(session({

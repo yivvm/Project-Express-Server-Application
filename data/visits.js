@@ -141,5 +141,18 @@ module.exports = [
         "email": "greghager@example.com",
         "reason": "illness",
         "other": "sdgadfasdfasd"
+    },
+    {
+        "id": 12,
+        "scheduled date": "2024-03-28",
+        "time": "11:50",
+        "first name": "Sarah",
+        "last name": "Whitfield",
+        "date of birth": "1990-07-05",
+        "gender": "female",
+        "phone": "777-000-8888",
+        "email": "sw1990123@example.com",
+        "reason": "illness",
+        "other": ""
     }
 ]
